@@ -1,0 +1,95 @@
+﻿@model IEnumerable<OnlineContracting.Models.agent>
+
+@{
+    ViewBag.Title = "Admininstrator Page";
+}
+
+<h2>Manage Agents</h2><br />
+
+<div class="clearfix">
+    <a href="@Url.Action("Index", "Agent")"><div class="NavBubble"><h3>Fill out Contract</h3></div></a>
+    <!-- Impossible to get to SuperAdmin Page without being in role of super admin -->
+    @if (User.IsInRole("SuperAdmin"))
+    { <a href="@Url.Action("SuperAdmin")"><div class="NavBubble"><h3>Edit Users</h3></div></a>}
+</div><br /><br />
+
+<!--    https://stackoverflow.com/questions/1909992/how-to-get-old-value-with-onchange-event-in-text-box   -->
+<select onfocus="this.oldvalue = this.value;" onchange="showAdvisorStates(this); this.oldvalue = this.value;">
+    <option selected="selected" disabled>Select an Advisor</option>
+    <option value="Pending">Pending</option>
+    <option value="ToBeRequested">Needs to be Requested</option>
+    @foreach (var item in Model)
+    {
+        <option>@Html.DisplayFor(modelItem => item.name)</option>
+    }
+</select>
+
+<div id="Legend" class="clearfix">
+    <div class="LegendDiv">
+        <p style="color:black">0 = Not Available</p>
+        <p style="color:orange">3 = Requested</p>
+    </div>
+    <div class="LegendDiv">
+        <p style="color:green">1 = Appointed</p>
+        <p style="color:gray">4 = Null</p>
+    </div>
+    <div class="LegendDiv">
+        <p style="color:red">2 = Needs to be Requested</p>
+    </div>
+</div>
+
+<div id="Pending" class="noShow">
+    @Html.Action("GetAdvisorStatus", new { status = 3 })
+</div>
+<div id="ToBeRequested" class="noShow">
+    @Html.Action("GetAdvisorStatus", new { status = 2 })
+</div>
+
+@foreach (var item in Model)
+{
+    <div id="@item.name" class="noShow myTable">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Carrier</th>
+                    <th>AR</th>
+                    <th>AZ</th>
+                    <th>CO</th>
+                    <th>GA</th>
+                    <th>ID</th>
+                    <th>IL</th>
+                    <th>IN</th>
+                    <th>KS</th>
+                    <th>MI</th>
+                    <th>MO</th>
+                    <th>MS</th>
+                    <th>MS</th>
+                    <th>NC</th>
+                    <th>NM</th>
+                    <th>NV</th>
+                    <th>OH</th>
+                    <th>OK</th>
+                    <th>PA</th>
+                    <th>SC</th>
+                    <th>TX</th>
+                    <th>UT</th>
+                    <th>Follow Up</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (User.IsInRole("Admin"))
+                {
+                    @Html.Partial("_AgentTable", item.infoes)
+                }
+                else
+                {
+                    @Html.Partial("_AgentTableEditable", item.infoes)
+                }
+
+            </tbody>
+        </table>
+    </div>
+}
+
+@Html.ActionLink("Send Report of Changes", "DailyEmail", "Home")

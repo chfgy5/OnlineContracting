@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Contracting";
+    string id = User.Identity.GetUserId();
+}
+
+<h2>Begin Contracting!</h2>
+
+<div class="clearfix">
+    <a href="@Url.Action("ContractForm", "Agent", new { id })"><div class="mainDiv"><h1>Fill out contract form</h1></div></a>
+    <br />
+    <div class="subDivContainer">
+        <a href="@Url.Action("DisplayContract", "Agent", new { filePath = "C:/wamp/www/OnlineContracting/OnlineContracting/PDFs/AetnaContract" + id + ".pdf" })"><div class="subDiv"><h1>Get Aetna Contract</h1></div></a>
+        <a href="@Url.Action("DisplayContract", "Agent", new { filePath = "C:/wamp/www/OnlineContracting/OnlineContracting/PDFs/MedicoContract" + id + ".pdf" })"><div class="subDiv"><h1>Get Medico Contract</h1></div></a>
+        <br />
+        <a href="@Url.Action("DisplayContract", "Agent", new { filePath = "C:/wamp/www/OnlineContracting/OnlineContracting/PDFs/MutualContract" + id + ".pdf" })"><div class="subDiv"><h1>Get Mutual Contract</h1></div></a>
+        <a href="@Url.Action("DisplayContract", "Agent", new { filePath = "C:/wamp/www/OnlineContracting/OnlineContracting/PDFs/TransamericaPremierContract" + id + ".pdf" })"><div class="subDiv"><h1>Get Transamerica Premier Contract</h1></div></a>
+    </div>
+    @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+    { @Html.ActionLink("Return To Admin Page", "Index", "Admin")}
+    <br />
+</div>

@@ -1,0 +1,180 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+img {
+    margin:3px;
+    width: 175px;
+    height: 45px;
+    padding-right: 5px;
+}
+
+.navbar {
+    background-color: #fff;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #055aac;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: black;
+}
+
+.navbar-inverse .navbar-brand, .NavBubble h3, .subDiv h1 {
+    color: #fff;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.mainDiv {
+    width: 100%;
+    height: 180px;
+    background-color: #055aac;
+    border-radius: 25px;
+}
+
+.mainDiv h1 {
+    color: #fff;
+}
+
+.subDiv {
+    width: 47%;
+    height: 150px;
+    background-color: #3385d4;
+    border-radius: 25px;
+    margin: 10px;
+    float: left;
+}
+
+.subDivContainer {
+    width: 100%;
+    height: 310px;
+}
+
+.NavBubble {
+    width: 200px;
+    height: 50px;
+    background-color: #ffff;
+    border: 2px solid #305A72;
+    border-radius: 10px;
+    margin: 10px;
+    float: left;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+   
+        /* Have to select the text specifically */
+    .NavBubble h3 {
+        color: #305A72;
+    }
+
+/* stupid name to avoid bootstrap class */
+.noShow {
+    display: none;
+}
+
+#Legend {
+    margin: 10px;
+    text-align: center;
+}
+
+.required:after {
+    content: "*";
+    color: red;
+}
+
+.LegendDiv {
+    float: left;
+    width: 30%;
+}
+
+#SSNInvalid, #NPNInvalid, #dateInvalid {
+    color: red;
+    display: none;
+}
+
+#Form {
+    max-width: 700px;
+    background: #FAFAFA;
+    padding: 30px;
+    margin: 50px auto;
+    box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    border: 6px solid #305A72;
+}
+
+    #Form ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+        #Form ul li {
+            display: inline-block;
+            margin-bottom: 10px;
+            min-height: 35px;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            padding: 8px;
+            outline: none;
+            border: 1px solid #B0CFE0;
+            -webkit-transition: all 0.30s ease-in-out;
+            -moz-transition: all 0.30s ease-in-out;
+            -o-transition: all 0.30s ease-in-out;
+            box-shadow: 0 0 5px #B0CFE0;
+            border: 1px solid #B0CFE0
+        }
+
+            #Form ul li submit {
+                -moz-box-shadow: inset 0 1px 0 0 #3985B1;
+                -webkit-box-shadow: inset 0 1px 0 0 #3985B1;
+                box-shadow: inset 0 1px 0 0 #3985B1;
+                background-color: #216288;
+                border: 1px solid #17445E;
+                display: inline-block;
+                cursor: pointer;
+                color: #FFFFFF;
+                padding: 8px 18px;
+                text-decoration: none;
+                font: 12px Arial, Helvetica, sans-serif;
+            }
+
+h1 {
+    color: black;
+    text-align: center;
+    position: relative;
+    top: 40%;
+    transform: translateY(-50%);
+}
+
+h3 {
+    color: black;
+    text-align: center;
+    position: relative;
+    top: 10%;
+    transform: translateY(-50%);
+}

@@ -1,0 +1,243 @@
+﻿@model OnlineContracting.Models.ApplicationUser
+
+<h2>ContractForm</h2>
+
+@using (Html.BeginForm("Generate", "Agent", new { id = Model.Id }, FormMethod.Post, new { id = "Form", name = "Form" }))
+{
+    <h3>Basic Information</h3>
+    <ul>
+        <li>
+            <b>Name</b>
+            <br /><br />
+            <b class="required">First:</b>
+            @Html.TextBox("Fname", null, new { required = "required" })
+            <b>Middle:</b>
+            @Html.TextBox("MI")<br /><br />
+            <b class="required">Last:</b>
+            @Html.TextBox("LName", null, new { required = "required" })
+            <b>Suffix:</b>
+            @Html.TextBox("Suffix")
+        </li>
+
+        <li>
+            <b class="required">Social Security Number (SSN):</b>
+            <br /><br />
+            @Html.TextBox("SSN1", null, new { oninput = "autotab(this, document.Form.SSN2);checkNum(value, 'SSNInvalid')", maxlength = "3", required = "required" }) -
+            @Html.TextBox("SSN2", null, new { oninput = "autotab(this, document.Form.SSN3);checkNum(value, 'SSNInvalid')", maxlength = "2", required = "required" }) -
+            @Html.TextBox("SSN3", null, new { oninput = "autotab(this, document.Form.NPN);checkNum(value, 'SSNInvalid')", maxlength = "4", required = "required" })
+            <b id="SSNInvalid">The entered SSN is incorrect</b>
+        </li>
+
+        <li>
+            <b class="required">Nation Producer Number (NPN):</b>
+            @Html.TextBox("NPN", null, new { oninput = "autotab(this, document.Form.DoB);checkNum(value, 'NPNInvalid')", maxlength = "10", required = "required" })
+            <b id="NPNInvalid">The entered NPN is incorrect</b>
+        </li>
+
+        <li>
+            <b class="required">Date of Birth (MM/DD/YYYY):</b>
+            @Html.TextBox("DoB", null, new { oninput = "autotab(this, document.Form.Gender);checkDate(value)", maxlength = "10", required = "required" })
+            <b id="dateInvalid">The entered date is incorrect. You must use MM/DD/YYYY</b>
+        </li>
+
+        <li>
+            <b>Gender (Use "M" or "F"):</b>
+            @Html.TextBox("Gender", null, new { oninput = "autotab(this, document.Form.HomeAddress)", maxlength = "1"})
+        </li>
+
+        <li>
+            <b class="required">Residential Address (Not a P.O. Box):</b>
+            @Html.TextBox("HomeAddress", null, new { required = "required" })
+            <br /><br />
+            <b>Apartment Number:</b>
+            @Html.TextBox("Apt")
+        </li>
+
+        <li>
+            <b class="required">City:</b>
+            @Html.TextBox("HomeCity", null, new { required = "required" })
+            <b class="required">State:</b>
+            @Html.TextBox("HomeState", null, new { required = "required" })<br /><br />
+            <b class="required">Zip:</b>
+            @Html.TextBox("HomeZip", null, new { required = "required" })
+        </li>
+
+        <li>
+            <b class="required">Preferred Phone:</b>
+            @Html.TextBox("PrefPhone", null, new { required = "required" })
+            <b>Fax:</b>
+            @Html.TextBox("Fax")
+        </li>
+
+        <li>
+            <b class="required">Email Address:</b>
+            @Html.TextBox("Email", null, new { required = "required" })
+        </li>
+
+        <li>
+            <b>Previous Name:</b>
+            @Html.TextBox("PrevName")
+        </li>
+
+        <li>
+            <b class="required">Resident License State:</b>
+            @Html.TextBox("ResLicenseState", null, new { required = "required" })
+        </li>
+
+        <li>
+            <b>Non-Resident State(s) where appointment is requested:</b>
+            @Html.TextBox("NonResStates")
+        </li>
+    </ul>
+    <h3>Contract Information</h3>
+
+    <ul>
+        <li>
+            <b class="required">1. Have you ever had an insurance or securities license denied, suspended, cancelled or revoked?</b>
+            <br /><br />
+            Yes: @Html.RadioButton("Q1", "Yes", new { required = "required" })
+            No: @Html.RadioButton("Q1", "No", new { required = "required" })
+            <br />
+            If answered 'Yes', please provide details: @Html.TextBox("Yes1Details")
+        </li>
+
+        <li>
+            <b class="required">2. Has any regulatory body ever sanctioned, censured, enalized or otherwise disciplined you?</b>
+            <br /><br />
+            Yes: @Html.RadioButton("Q2", "Yes", new { required = "required" })
+            No: @Html.RadioButton("Q2", "No", new { required = "required" })
+            <br />
+            If answered 'Yes', please provide details: @Html.TextBox("Yes2Details")
+        </li>
+
+        <li>
+            <b class="required">3. Has any state, federal or self-regulatory agency filed a complaint against you, fined, sanctioned, censured,
+            penalized or otherwise disciplined you for a violation of their regulations or state or federal statutes?</b>
+            <br /><br />
+            Yes: @Html.RadioButton("Q3", "Yes", new { required = "required" })
+            No: @Html.RadioButton("Q3", "No", new { required = "required" })
+            <br />
+            If answered 'Yes', please provide details: @Html.TextBox("Yes3Details")
+        </li>
+
+        <li>
+            <b class="required">4. Have you ever been convicted or plead guilty or nolo contendere (no contest), served any probation, paid any
+            fines or court costs, had charges dismissed through any type of first offender or deferred adjudication or suspended
+            sentence procedure, or are any charges currently pending against you for any FELONY offense?</b>
+            <br /><br />
+            Yes: @Html.RadioButton("Q4", "Yes", new { required = "required" })
+            No: @Html.RadioButton("Q4", "No", new { required = "required" })
+            <br />
+            If answered 'Yes', please provide details: @Html.TextBox("Yes4Details")
+        </li>
+
+        <li>
+            <b class="required">5. Are you in possession of a valid 1033 waiver from a state DOI or other regulatory authority for any of the above
+            offenses?</b>
+            <br /><br />
+            Yes: @Html.RadioButton("Q5", "Yes", new { required = "required" })
+            No: @Html.RadioButton("Q5", "No", new { required = "required" })
+            <br />
+            If answered 'Yes', please provide details: @Html.TextBox("Yes5Details")
+        </li>
+
+        <li>
+            <b class="required">6. In the last seven years, have you been convicted or pleadguilty or nolo contendere (no contest), served any probation,
+            paid any fines or court costs, had charges dismissed through any type of first offender or deferred adjudication or
+            suspended sentence procedure, or are any charges currently pending against you for any MISDEMEANOR offense other than
+            a minor traffic violation?</b>
+            <br /><br />
+            Yes: @Html.RadioButton("Q6", "Yes", new { required = "required" })
+            No: @Html.RadioButton("Q6", "No", new { required = "required" })
+            <br />
+            If answered 'Yes', please provide details: @Html.TextBox("Yes6Details")
+        </li>
+
+        <li>
+            <b class="required">7. In the past ten years, have you personally filed a bankruptcy petition or declared bankruptcy?</b>
+            <br /><br />
+            Yes: @Html.RadioButton("Q7", "Yes", new { required = "required" })
+            No: @Html.RadioButton("Q7", "No", new { required = "required" })
+            <br />
+            If answered 'Yes', please provide details: @Html.TextBox("Yes7Details")
+        </li>
+
+        <li>
+            <b class="required">8. Are there any unsatisfied judgments, garnishments or liens against you?</b>
+            <br /><br />
+            Yes: @Html.RadioButton("Q8", "Yes", new { required = "required" })
+            No: @Html.RadioButton("Q8", "No", new { required = "required" })
+            <br />
+            If answered 'Yes', please provide details: @Html.TextBox("Yes8Details")
+        </li>
+
+        <li>
+            <b class="required">9. Have you ever been short in accounts with any employer or are you in debt to any insurance company?</b>
+            <br /><br />
+            Yes: @Html.RadioButton("Q9", "Yes", new { required = "required" })
+            No: @Html.RadioButton("Q9", "No", new { required = "required" })
+            <br />
+            If answered 'Yes', please provide details: @Html.TextBox("Yes9Details")
+        </li>
+
+        <li>
+            <b class="required">10. Are you currently a party to any litigation or a subject of any investigation(s)?</b>
+            <br /><br />
+            Yes: @Html.RadioButton("Q10", "Yes", new { required = "required" })
+            No: @Html.RadioButton("Q10", "No", new { required = "required" })
+            <br />
+            If answered 'Yes', please provide details: @Html.TextBox("Yes10Details")
+        </li>
+
+        <li>
+            <b class="required">11. Have you ever had an appointment with another insurance company denied or terminated for cause?</b>
+            <br /><br />
+            Yes: @Html.RadioButton("Q11", "Yes", new { required = "required" })
+            No: @Html.RadioButton("Q11", "No", new { required = "required" })
+            <br />
+            If answered 'Yes', please provide details: @Html.TextBox("Yes11Details")
+        </li>
+
+        <li>
+            <b class="required">12. Have you ever been refused bond?</b>
+            <br /><br />
+            Yes: @Html.RadioButton("Q12", "Yes", new { required = "required" })
+            No: @Html.RadioButton("Q12", "No", new { required = "required" })
+            <br />
+            If answered 'Yes', please provide details: @Html.TextBox("Yes12Details")
+        </li>
+
+        <li>
+            <b class="required">13. Do you have any outstanding or unsatisfied collections, judgments and/or liens, including tax liens,
+            totaling $50,000 or more?</b>
+            <br /><br />
+            Yes: @Html.RadioButton("Q13", "Yes", new { required = "required" })
+            No: @Html.RadioButton("Q13", "No", new { required = "required" })
+            <br />
+            If answered 'Yes', please provide details: @Html.TextBox("Yes13Details")
+        </li>
+
+        <li>
+            <b class="required">14. Have you been convicted of, or pled guilty or nolo contendere (“no contest”) to a felony or misdemeanor
+            involving: insurance, investments or a related business, fraud, false statements or omissions, wrongful
+            taking of property, or bribery, forgery, counterfeiting or extortion, or breach of trust?</b>
+            <br /><br />
+            Yes: @Html.RadioButton("Q14", "Yes", new { required = "required" })
+            No: @Html.RadioButton("Q14", "No", new { required = "required" })
+            <br />
+            If answered 'Yes', please provide details: @Html.TextBox("Yes14Details")
+        </li>
+
+        <li>
+            <b class="required">15. Have you ever been convicted of, or pled guilty or nolo contendere (“no contest”) to any other felony or
+            misdemeanor?</b>
+            <br /><br />
+            Yes: @Html.RadioButton("Q15", "Yes", new { required = "required" })
+            No: @Html.RadioButton("Q15", "No", new { required = "required" })
+            <br />
+            If answered 'Yes', please provide details: @Html.TextBox("Yes15Details")
+        </li>
+    </ul>
+    <input type="submit" value="Submit" />
+    <input type="button" value="Cancel" onclick="window.location.href='@Url.Action("Index", new { id = Model.Id })';" />
+}

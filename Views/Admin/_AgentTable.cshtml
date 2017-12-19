@@ -1,0 +1,37 @@
+﻿@model IEnumerable<OnlineContracting.Models.info>
+@Scripts.Render("~/bundles/jquery")
+
+<script type="text/javascript">
+    $(document).ready(addStyle());
+</script>
+
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.carrier_name)</td>
+        <td>@Html.DisplayFor(modelItem => item.AR)</td>
+        <td>@Html.DisplayFor(modelItem => item.AZ)</td>
+        <td>@Html.DisplayFor(modelItem => item.CO)</td>
+        <td>@Html.DisplayFor(modelItem => item.GA)</td>
+        <td>@Html.DisplayFor(modelItem => item.ID)</td>
+        <td>@Html.DisplayFor(modelItem => item.IL)</td>
+        <td>@Html.DisplayFor(modelItem => item.IN)</td>
+        <td>@Html.DisplayFor(modelItem => item.KS)</td>
+        <td>@Html.DisplayFor(modelItem => item.MI)</td>
+        <td>@Html.DisplayFor(modelItem => item.MO)</td>
+        <td>@Html.DisplayFor(modelItem => item.MS)</td>
+        <td>@Html.DisplayFor(modelItem => item.NC)</td>
+        <td>@Html.DisplayFor(modelItem => item.NE)</td>
+        <td>@Html.DisplayFor(modelItem => item.NM)</td>
+        <td>@Html.DisplayFor(modelItem => item.NV)</td>
+        <td>@Html.DisplayFor(modelItem => item.OH)</td>
+        <td>@Html.DisplayFor(modelItem => item.OK)</td>
+        <td>@Html.DisplayFor(modelItem => item.PA)</td>
+        <td>@Html.DisplayFor(modelItem => item.SC)</td>
+        <td>@Html.DisplayFor(modelItem => item.TX)</td>
+        <td>@Html.DisplayFor(modelItem => item.UT)</td>
+        <td>@Html.DisplayFor(modelItem => item.FollowUp)</td>
+        <td>@Html.DisplayFor(modelItem => item.notes)</td>
+    </tr>
+}

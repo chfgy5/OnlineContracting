@@ -1,0 +1,38 @@
+﻿@model IEnumerable<OnlineContracting.Models.info>
+@Scripts.Render("~/bundles/jquery")
+
+<script type="text/javascript">
+    $(document).ready(addStyle());
+</script>
+
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.carrier_name)</td>
+        @* The ondblclick string works, but if you reverse the single and double quotes it breaks... *@
+        <td id="@item.info_id-@item.carrier_name-AR" ondblclick='changeData("@item.info_id", "@item.carrier_name", "AR")'>@Html.DisplayFor(modelItem => item.AR)</td>
+        <td id="@item.info_id-@item.carrier_name-AZ" ondblclick='changeData("@item.info_id", "@item.carrier_name", "AZ")'>@Html.DisplayFor(modelItem => item.AZ)</td>
+        <td id="@item.info_id-@item.carrier_name-CO" ondblclick='changeData("@item.info_id", "@item.carrier_name", "CO")'>@Html.DisplayFor(modelItem => item.CO)</td>
+        <td id="@item.info_id-@item.carrier_name-GA" ondblclick='changeData("@item.info_id", "@item.carrier_name", "GA")'>@Html.DisplayFor(modelItem => item.GA)</td>
+        <td id="@item.info_id-@item.carrier_name-ID" ondblclick='changeData("@item.info_id", "@item.carrier_name", "ID")'>@Html.DisplayFor(modelItem => item.ID)</td>
+        <td id="@item.info_id-@item.carrier_name-IL" ondblclick='changeData("@item.info_id", "@item.carrier_name", "IL")'>@Html.DisplayFor(modelItem => item.IL)</td>
+        <td id="@item.info_id-@item.carrier_name-IN" ondblclick='changeData("@item.info_id", "@item.carrier_name", "IN")'>@Html.DisplayFor(modelItem => item.IN)</td>
+        <td id="@item.info_id-@item.carrier_name-KS" ondblclick='changeData("@item.info_id", "@item.carrier_name", "KS")'>@Html.DisplayFor(modelItem => item.KS)</td>
+        <td id="@item.info_id-@item.carrier_name-MI" ondblclick='changeData("@item.info_id", "@item.carrier_name", "MI")'>@Html.DisplayFor(modelItem => item.MI)</td>
+        <td id="@item.info_id-@item.carrier_name-MO" ondblclick='changeData("@item.info_id", "@item.carrier_name", "MO")'>@Html.DisplayFor(modelItem => item.MO)</td>
+        <td id="@item.info_id-@item.carrier_name-MS" ondblclick='changeData("@item.info_id", "@item.carrier_name", "MS")'>@Html.DisplayFor(modelItem => item.MS)</td>
+        <td id="@item.info_id-@item.carrier_name-NC" ondblclick='changeData("@item.info_id", "@item.carrier_name", "NC")'>@Html.DisplayFor(modelItem => item.NC)</td>
+        <td id="@item.info_id-@item.carrier_name-NE" ondblclick='changeData("@item.info_id", "@item.carrier_name", "NE")'>@Html.DisplayFor(modelItem => item.NE)</td>
+        <td id="@item.info_id-@item.carrier_name-NM" ondblclick='changeData("@item.info_id", "@item.carrier_name", "NM")'>@Html.DisplayFor(modelItem => item.NM)</td>
+        <td id="@item.info_id-@item.carrier_name-NV" ondblclick='changeData("@item.info_id", "@item.carrier_name", "NV")'>@Html.DisplayFor(modelItem => item.NV)</td>
+        <td id="@item.info_id-@item.carrier_name-OH" ondblclick='changeData("@item.info_id", "@item.carrier_name", "OH")'>@Html.DisplayFor(modelItem => item.OH)</td>
+        <td id="@item.info_id-@item.carrier_name-OK" ondblclick='changeData("@item.info_id", "@item.carrier_name", "OK")'>@Html.DisplayFor(modelItem => item.OK)</td>
+        <td id="@item.info_id-@item.carrier_name-PA" ondblclick='changeData("@item.info_id", "@item.carrier_name", "PA")'>@Html.DisplayFor(modelItem => item.PA)</td>
+        <td id="@item.info_id-@item.carrier_name-SC" ondblclick='changeData("@item.info_id", "@item.carrier_name", "SC")'>@Html.DisplayFor(modelItem => item.SC)</td>
+        <td id="@item.info_id-@item.carrier_name-TX" ondblclick='changeData("@item.info_id", "@item.carrier_name", "TX")'>@Html.DisplayFor(modelItem => item.TX)</td>
+        <td id="@item.info_id-@item.carrier_name-UT" ondblclick='changeData("@item.info_id", "@item.carrier_name", "UT")'>@Html.DisplayFor(modelItem => item.UT)</td>
+        <td><input id="@item.info_id-@item.carrier_name-FollowUp" type="date" value='@string.Format("{0:yyyy-MM-dd}", item.FollowUp)' onchange="saveDate(@item.info_id, value)"/></td>
+        <td><input id="@item.info_id-@item.carrier_name-Note" type="text" value='@item.notes' onchange="saveNote(@item.info_id, value)"/></td>
+    </tr>
+}
